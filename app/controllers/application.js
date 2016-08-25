@@ -75,7 +75,7 @@ export default Ember.Controller.extend({
         getPhotos: function(){
             var apiKey = 'a9568423bb5acee88c50008f72a33b89';
             var host = 'https://api.flickr.com/services/rest/';
-            var method = "flicker.tags.getClusterPhotos";
+            var method = "flickr.tags.getClusterPhotos";
             var tag = "phones";
             var requestURL = host + "?method="+method + "&api_key="+apiKey+"&tag="+"&format=json&nojsoncallback=1";
             var photos = this.get('photos');
