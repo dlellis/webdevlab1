@@ -48,6 +48,7 @@ export default Ember.Controller.extend({
             var method = "flickr.tags.getClusterPhotos";
             var requestURL = host + "?method="+method + "&api_key="+apiKey+"&tag="+tag+"&format=json&nojsoncallback=1";
             var photos = this.get('photos');
+            var t = this;
             Ember.$.getJSON(requestURL, function(data){
                 console.log(data);
                 data.photos.photo.map(function(photo) {
