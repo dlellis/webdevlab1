@@ -12,8 +12,8 @@ var Photo = Ember.Object.extend({
     server: '',
     url: function(){
         return "https://farm"+this.get('farm')+
-        ".staticflickr.com/"+this.get('server')+
-        "/"+this.get('id')+"_"+this.get('secret')+"_b+jpg";
+        ".static.flickr.com/"+this.get('server')+
+        "/"+this.get('id')+"_"+this.get('secret')+"_b.jpg";
     }.property('farm','server','id','secret'),
 });
 
@@ -46,7 +46,7 @@ export default Ember.Controller.extend({
             var apiKey = 'a9568423bb5acee88c50008f72a33b89';
             var host = 'https://api.flickr.com/services/rest/';
             var method = "flickr.tags.getClusterPhotos";
-            var requestURL = host + "?method="+method + "&api_key="+apiKey+"&tag="+"&format=json&nojsoncallback=1";
+            var requestURL = host + "?method="+method + "&api_key="+apiKey+"&tag="+tag+"&format=json&nojsoncallback=1";
             var photos = this.get('photos');
             Ember.$.getJSON(requestURL, function(data){
                 console.log(data);
@@ -64,7 +64,7 @@ export default Ember.Controller.extend({
                     
                     });
                     photos.pushObject(newPhotoItem);
-            })
+            });
         });
     },
     
