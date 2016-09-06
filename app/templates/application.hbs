@@ -8,8 +8,6 @@
             {{#bs-form formLayout="inline" action="search"}}
                 {{#if filteredPhotos}}
                     {{bs-input type="text" value=searchField placeholder="filter photos"}}
-                {{else}}
-                    Nope
                 
                 {{/if}}
                 {{bs-input type="text" value=tagSearchField action="search" placeholder="search for a flickr tag"}}
