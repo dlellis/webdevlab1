@@ -56,7 +56,7 @@ export default Ember.Controller.extend({
                 //callback for successfully complete requests
                 //make secondary requests to get all of the photo information
                 data.photos.photo.map(function(photoitem) {//iterate over each photo
-                    var infoRequestURL = host + "?method="+"flickr.photos.getInfo"+ "&apki_key="+apiKey+"&photo_id="+photoitem.id+"&format=json&nojsoncallback=1";
+                    var infoRequestURL = host + "?method="+"flickr.photos.getInfo"+ "&api_key="+apiKey+"&photo_id="+photoitem.id+"&format=json&nojsoncallback=1";
                     Ember.$.getJSON(infoRequestURL, function(item){
                         var photo = item.photo;
                         var tags = photo.tags.tag.map(function(tagitem){
