@@ -19,8 +19,8 @@ var Photo = Ember.Object.extend({
 });
 */
 var PhotoCollection = Ember.ArrayProxy.extend(Ember.SortableMixin, {
-    sortProperties: ['title'],
-    sortAscending: true,
+    sortProperties: ['dates.taken'],
+    sortAscending: false,
     content: [],
 });
 
