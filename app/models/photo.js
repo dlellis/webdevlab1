@@ -28,7 +28,7 @@ export default DS.Model.extend({
         var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
         var months = ["January", "Feburary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-        return days[taken.getDay()] + " " + months[taken.getMonth()] + " " + taken.getDate()+","+taken.getFullYear();
+        return days[taken.getDay()] + " " + months[taken.getMonth()] + " " + taken.getDate()+", "+taken.getFullYear();
 
 
     }.property('dates.taken'),
