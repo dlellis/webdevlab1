@@ -5,7 +5,7 @@
             <a class="navbar-brand" href="#">My App</a>
         </div>
         <div class="navbar-right search-field">
-            {{#bs-form formLayout="inline" action="search"}}
+            {{#bs-form formLayout="inline" class="search-form" action="search"}}
                 {{#if filteredPhotos}}
                     {{bs-input type="text" value=searchField placeholder="filter photos"}}
                 
@@ -15,6 +15,7 @@
                     <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                 </button>
             {{/bs-form}}
+            {{auth-manager}}
         </div>
     </div>
 </nav>
