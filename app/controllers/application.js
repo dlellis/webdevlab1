@@ -1,23 +1,6 @@
 import Ember from 'ember';
 
-/*
-var Photo = Ember.Object.extend({
-    title: '',
-    username: '',
-    //flickr extra data
-    owner: '',
-    //flickr url data
-    id: '',
-    farm: 0,
-    secret: '',
-    server: '',
-    url: function(){
-        return "https://farm"+this.get('farm')+
-        ".static.flickr.com/"+this.get('server')+
-        "/"+this.get('id')+"_"+this.get('secret')+"_b.jpg";
-    }.property('farm','server','id','secret'),
-});
-*/
+
 var PhotoCollection = Ember.ArrayProxy.extend(Ember.SortableMixin, {
     sortProperties: ['dates.taken'],
     sortAscending: false,
@@ -43,6 +26,25 @@ export default Ember.Controller.extend({
         });
     }.property('photos.@each','searchField'),
     actions: {
+        like: function(photo){
+            var title = photo.get('title');
+            if(title.length >= 97){
+                title = title.substring(0,96) + "...";
+            }
+            var photodata = {
+                'user': this.get('userid'),
+                'title': title,
+                'objid': photo.get('id'),
+                'farm': photo.get('farm'),
+                'secret': photo.get('secret'),
+                'server': photo.get('server'),
+            };
+            Ember.$.post('../api/likes/', photodata, function(response){
+                    photo.set('liked',true);
+                    console.log('Request to add like for photo: '+photo.get('title')+' returned the following response');
+                    console.log(response);
+                });
+        },
         search: function () {
             this.set('loading', true);
             this.get('photos').content.clear();
